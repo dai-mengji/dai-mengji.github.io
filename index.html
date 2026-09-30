@@ -1,11 +1,295 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <title>我的主页</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>大一自我介绍 · 不被定义</title>
+<link href="https://fonts.googleapis.com/css2?family=ZCOOL+QingKe+HuangYou&family=Noto+Sans+SC:wght@300;400;700;900&family=Archivo+Black&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0b0b10;
+  --ink:#f4f2ec;
+  --acid:#c9ff2e;
+  --volt:#7c5cff;
+  --pink:#ff4fa3;
+  --line:rgba(244,242,236,.14);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--ink);
+  font-family:'Noto Sans SC',sans-serif;cursor:crosshair}
+
+/* ---------- 背景氛围 ---------- */
+.grain{position:fixed;inset:0;pointer-events:none;z-index:60;opacity:.55;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");}
+.blob{position:fixed;border-radius:50%;filter:blur(90px);opacity:.35;z-index:0;pointer-events:none}
+.b1{width:46vw;height:46vw;background:var(--volt);top:-12vw;left:-10vw;animation:drift 14s ease-in-out infinite alternate}
+.b2{width:38vw;height:38vw;background:var(--acid);bottom:-14vw;right:-8vw;opacity:.18;animation:drift 18s ease-in-out infinite alternate-reverse}
+.b3{width:24vw;height:24vw;background:var(--pink);top:40%;left:60%;opacity:.14;animation:drift 11s ease-in-out infinite alternate}
+@keyframes drift{from{transform:translate(0,0) scale(1)}to{transform:translate(6vw,4vh) scale(1.15)}}
+.gridlines{position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:80px 80px;mask-image:radial-gradient(circle at 50% 50%,black 20%,transparent 85%)}
+
+/* ---------- 幻灯结构 ---------- */
+.slide{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;
+  padding:6vh 7vw;opacity:0;visibility:hidden;transform:scale(1.04);
+  transition:opacity .55s ease,transform .55s ease,visibility .55s;z-index:1}
+.slide.active{opacity:1;visibility:visible;transform:scale(1);z-index:5}
+.wrap{width:100%;max-width:1180px;position:relative}
+
+/* 逐层入场 */
+.slide .rv{opacity:0;transform:translateY(38px)}
+.slide.active .rv{animation:rise .8s cubic-bezier(.2,.8,.2,1) forwards}
+.slide.active .rv:nth-of-type(1){animation-delay:.10s}
+.slide.active .rv:nth-of-type(2){animation-delay:.24s}
+.slide.active .rv:nth-of-type(3){animation-delay:.38s}
+.slide.active .rv:nth-of-type(4){animation-delay:.52s}
+.slide.active .rv:nth-of-type(5){animation-delay:.66s}
+.slide.active .rv:nth-of-type(6){animation-delay:.80s}
+@keyframes rise{to{opacity:1;transform:translateY(0)}}
+
+/* ---------- 排版 ---------- */
+.disp{font-family:'ZCOOL QingKe HuangYou',sans-serif;line-height:1.05;letter-spacing:.02em}
+.kicker{font-family:'Archivo Black',sans-serif;font-size:.8rem;letter-spacing:.4em;color:var(--acid);text-transform:uppercase}
+.bignum{font-family:'Archivo Black',sans-serif;font-size:clamp(6rem,16vw,13rem);
+  -webkit-text-stroke:2px rgba(244,242,236,.28);color:transparent;position:absolute;
+  top:-.55em;right:0;z-index:-1;user-select:none}
+.acid{color:var(--acid)}
+.outl{color:transparent;-webkit-text-stroke:2px var(--ink)}
+
+/* ---------- 封面 ---------- */
+.cover h1{font-size:clamp(4.2rem,13vw,11rem);position:relative}
+.cover h1 .row2{margin-left:.9em}
+.tag{display:inline-block;border:2px solid var(--acid);color:var(--acid);
+  padding:.45em 1.1em;font-weight:700;transform:rotate(-2deg);margin-top:2.2rem;font-size:1.05rem}
+.cover .sub{margin-top:2rem;color:rgba(244,242,236,.6);font-weight:300;letter-spacing:.25em}
+.spinbadge{position:absolute;right:4vw;top:-6vh;width:130px;height:130px;animation:spin 12s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* 跑马灯 */
+.marquee{position:fixed;left:0;right:0;z-index:40;overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  background:rgba(11,11,16,.6);backdrop-filter:blur(6px)}
+.mq-track{display:flex;gap:3rem;white-space:nowrap;padding:.55rem 0;
+  font-family:'ZCOOL QingKe HuangYou';letter-spacing:.25em;font-size:.85rem;color:var(--acid);
+  animation:mq 22s linear infinite;width:max-content}
+@keyframes mq{to{transform:translateX(-50%)}}
+.mq-top{top:0}.mq-bot{bottom:0}
+.mq-bot .mq-track{animation-direction:reverse;color:var(--volt)}
+
+/* ---------- 内容卡 ---------- */
+.lead{font-size:clamp(1.6rem,3.2vw,2.6rem);font-weight:900;line-height:1.5;max-width:20em}
+.lead em{font-style:normal;color:var(--acid);position:relative}
+.lead em::after{content:"";position:absolute;left:0;bottom:.05em;width:100%;height:.35em;
+  background:var(--acid);opacity:.22;z-index:-1}
+.body{margin-top:2rem;font-weight:300;font-size:clamp(1rem,1.5vw,1.2rem);
+  line-height:2;color:rgba(244,242,236,.75);max-width:34em}
+
+.chips{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:2.2rem}
+.chip{border:1.5px solid var(--line);padding:.55em 1.2em;border-radius:999px;font-weight:700;
+  font-size:1rem;background:rgba(244,242,236,.04);transition:.3s}
+.chip:hover{border-color:var(--acid);color:var(--acid);transform:translateY(-3px) rotate(-1deg)}
+.chip.hot{background:var(--acid);color:#0b0b10;border-color:var(--acid)}
+
+/* 经验条 */
+.bars{margin-top:2.4rem;display:grid;gap:1.1rem;max-width:560px}
+.bar .lab{display:flex;justify-content:space-between;font-size:.85rem;letter-spacing:.15em;margin-bottom:.4rem;color:rgba(244,242,236,.7)}
+.bar .track{height:10px;background:rgba(244,242,236,.08);overflow:hidden}
+.bar .fill{height:100%;width:0;background:repeating-linear-gradient(45deg,var(--acid) 0 8px,#0b0b10 8px 16px)}
+.slide.active .bar .fill{transition:width 1.2s cubic-bezier(.2,.8,.2,1) .6s;width:var(--w)}
+
+/* 奖项卡 */
+.awards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:2.6rem}
+.card{border:2px solid var(--line);padding:1.6rem 1.4rem;background:rgba(244,242,236,.03);
+  transition:.35s;position:relative;overflow:hidden}
+.card:hover{transform:translateY(-8px);border-color:var(--acid)}
+.card::before{content:"";position:absolute;top:0;left:-100%;width:100%;height:100%;
+  background:linear-gradient(90deg,transparent,rgba(201,255,46,.12),transparent);transition:.6s}
+.card:hover::before{left:100%}
+.card .lv{font-family:'Archivo Black';font-size:.72rem;letter-spacing:.3em;color:var(--pink)}
+.card h4{font-family:'ZCOOL QingKe HuangYou';font-size:1.5rem;margin:.6rem 0 .4rem}
+.card p{font-size:.9rem;color:rgba(244,242,236,.6);font-weight:300;line-height:1.7}
+
+/* 目标页 */
+.goal{font-size:clamp(3rem,8vw,6.5rem)}
+.goal .flash{display:inline-block;animation:flash 1.6s steps(2) infinite}
+@keyframes flash{50%{opacity:.25}}
+
+/* 总结页 */
+.sum{font-size:clamp(1.8rem,4.2vw,3.4rem);line-height:1.7;font-weight:900}
+.sum .w{display:inline-block;transition:.3s}
+.sum .w:hover{color:var(--acid);transform:rotate(-3deg) scale(1.12)}
+
+/* ---------- 导航 ---------- */
+.nav{position:fixed;bottom:4.2rem;right:5vw;z-index:50;display:flex;gap:.7rem;align-items:center}
+.nav button{width:52px;height:52px;background:transparent;border:2px solid var(--line);color:var(--ink);
+  font-size:1.2rem;cursor:pointer;transition:.3s;font-family:inherit}
+.nav button:hover{background:var(--acid);color:#0b0b10;border-color:var(--acid);transform:rotate(-6deg)}
+.pager{position:fixed;bottom:4.6rem;left:5vw;z-index:50;font-family:'Archivo Black';font-size:.85rem;letter-spacing:.2em;color:rgba(244,242,236,.5)}
+.pager b{color:var(--acid);font-size:1.4rem}
+.progress{position:fixed;top:0;left:0;height:4px;background:var(--acid);z-index:70;transition:width .5s cubic-bezier(.2,.8,.2,1);
+  box-shadow:0 0 14px var(--acid)}
+.hint{position:fixed;bottom:1.1rem;left:50%;transform:translateX(-50%);z-index:50;font-size:.72rem;
+  letter-spacing:.3em;color:rgba(244,242,236,.35)}
+</style>
 </head>
 <body>
-  <h1>你好，我是 dai-mengji</h1>
-  <p>这是我用手机搭的第一个网站！</p>
+
+<div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+<div class="gridlines"></div><div class="grain"></div>
+<div class="progress" id="prog"></div>
+
+<div class="marquee mq-top"><div class="mq-track" id="mq1"></div></div>
+<div class="marquee mq-bot"><div class="mq-track" id="mq2"></div></div>
+
+<!-- 01 封面 -->
+<section class="slide cover active">
+  <div class="wrap">
+    <svg class="spinbadge rv" viewBox="0 0 100 100">
+      <defs><path id="cir" d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0"/></defs>
+      <text fill="#c9ff2e" font-size="10.5" letter-spacing="2"><textPath href="#cir">HELLO FRESHMAN · 你好大一 · 2026 ·</textPath></text>
+      <circle cx="50" cy="50" r="5" fill="#ff4fa3"/>
+    </svg>
+    <div class="kicker rv">SELF INTRODUCTION / 自我介绍</div>
+    <h1 class="disp rv">大一<span class="outl">新生</span><br><span class="row2">请多<span class="acid">关照</span></span></h1>
+    <div class="rv"><span class="tag">⚠ 本人不接受被定义</span></div>
+    <p class="sub rv">拒绝标签 · 深度思考 · 无限可能</p>
+  </div>
+</section>
+
+<!-- 02 不被定义 -->
+<section class="slide">
+  <div class="wrap">
+    <div class="bignum">01</div>
+    <div class="kicker rv">CHAPTER 01 / 无限可能</div>
+    <h2 class="disp rv" style="font-size:clamp(3rem,7vw,5.5rem);margin:1rem 0">我不接受<span class="acid">被定义</span></h2>
+    <p class="lead rv">标签是别人贴的，<br>人生是<em>流动</em>的。</p>
+    <p class="body rv">别人怎么定义我，我不太在意。未来是未知的，所以人有无限可能。人的性格与行为是流动的——我们都有机会，成为自己想成为的人。</p>
+    <div class="chips rv">
+      <span class="chip hot">在座的你也有无限可能</span>
+      <span class="chip">意想不到的事，都做得到</span>
+    </div>
+  </div>
+</section>
+
+<!-- 03 深度思考 -->
+<section class="slide">
+  <div class="wrap">
+    <div class="bignum">02</div>
+    <div class="kicker rv">CHAPTER 02 / 探索自我</div>
+    <h2 class="disp rv" style="font-size:clamp(3rem,7vw,5.5rem);margin:1rem 0">深度思考<span class="outl">爱好者</span></h2>
+    <p class="lead rv">热爱<em>心理学</em>与<em>哲学</em>，<br>执着于探索自我。</p>
+    <div class="chips rv">
+      <span class="chip">🧠 心理学</span>
+      <span class="chip">📜 哲学</span>
+      <span class="chip">🏸 羽毛球</span>
+      <span class="chip hot">自我探索进行中…</span>
+    </div>
+    <p class="body rv">一边深度思考，一边持续升级自己——目前仍在自我探索阶段，欢迎围观进度。</p>
+  </div>
+</section>
+
+<!-- 04 班委经验 -->
+<section class="slide">
+  <div class="wrap">
+    <div class="bignum">03</div>
+    <div class="kicker rv">CHAPTER 03 / 实战履历</div>
+    <h2 class="disp rv" style="font-size:clamp(3rem,7vw,5.5rem);margin:1rem 0">班委经验<span class="acid">拉满</span></h2>
+    <p class="body rv">从小学到现在，班委经历从未间断。除了团支书和体育委员，其他岗位基本都当过——大大小小的事都处理过。</p>
+    <div class="bars">
+      <div class="bar rv"><div class="lab"><span>班委年限</span><span>MAX</span></div><div class="track"><div class="fill" style="--w:100%"></div></div></div>
+      <div class="bar rv"><div class="lab"><span>沟通协调</span><span>熟练</span></div><div class="track"><div class="fill" style="--w:90%"></div></div></div>
+      <div class="bar rv"><div class="lab"><span>责任担当</span><span>满格</span></div><div class="track"><div class="fill" style="--w:96%"></div></div></div>
+    </div>
+    <div class="chips rv">
+      <span class="chip">假期作业谋福利 🎁</span>
+      <span class="chip">帮同学反馈意见 📣</span>
+      <span class="chip">帮老师处理事务 🗂</span>
+    </div>
+  </div>
+</section>
+
+<!-- 05 勇于尝试 -->
+<section class="slide">
+  <div class="wrap">
+    <div class="bignum">04</div>
+    <div class="kicker rv">CHAPTER 04 / 敢试敢拼</div>
+    <h2 class="disp rv" style="font-size:clamp(3rem,7vw,5.5rem);margin:1rem 0">勇于尝试，<span class="acid">坚持到底</span></h2>
+    <div class="awards">
+      <div class="card rv"><div class="lv">NATIONAL 国家级</div><h4>英语奖项</h4><p>国家级奖项 · 初赛 + 复赛 双双拿下</p></div>
+      <div class="card rv"><div class="lv">PROVINCIAL 省级</div><h4>生物竞赛</h4><p>省级二等奖，理科细胞里也有热爱</p></div>
+      <div class="card rv"><div class="lv">CAMPUS 校内</div><h4>小荣誉 ×N</h4><p>认定的事，一般都会坚持到底 💪</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 做朋友 -->
+<section class="slide">
+  <div class="wrap" style="text-align:center">
+    <div class="bignum" style="right:auto;left:0">05</div>
+    <div class="kicker rv">CHAPTER 05 / 社交信号</div>
+    <h2 class="disp rv" style="font-size:clamp(3.4rem,9vw,7rem);margin:1.5rem 0">想和你们<br><span class="acid">成为朋友</span></h2>
+    <p class="lead rv" style="margin:0 auto">一起快乐度过<em>大学四年</em> ✦</p>
+    <div class="chips rv" style="justify-content:center">
+      <span class="chip hot">好友申请：已发送</span>
+      <span class="chip">探索未来 · 组队中</span>
+    </div>
+  </div>
+</section>
+
+<!-- 07 目标 -->
+<section class="slide">
+  <div class="wrap">
+    <div class="bignum">06</div>
+    <div class="kicker rv">CHAPTER 06 / 四年之约</div>
+    <h2 class="disp rv" style="margin:1rem 0;font-size:clamp(2.6rem,5vw,4rem)">我的大学目标</h2>
+    <h3 class="disp goal rv"><span class="flash">▸</span> 实现<span class="acid">经济自由</span></h3>
+    <p class="body rv">我相信人的性格和行为是流动的——我们可以塑造自己，也有机会活成自己想要的样子。</p>
+  </div>
+</section>
+
+<!-- 08 总结 -->
+<section class="slide">
+  <div class="wrap">
+    <div class="kicker rv">ONE SENTENCE / 一句话总结</div>
+    <p class="sum rv" style="margin-top:2.5rem">
+      我是一个<span class="w">拒绝被定义</span>、<span class="w">相信无限可能</span>、<br>
+      喜欢深度思考、班委经验丰富、<br>
+      勇于尝试并<span class="w acid">坚持到底</span>的人。
+    </p>
+    <p class="body rv" style="font-size:1.3rem;margin-top:2.6rem">希望和大家做朋友，一起探索未来，朝经济自由努力 —— 谢谢！ 🚀</p>
+  </div>
+</section>
+
+<div class="pager"><b id="cur">01</b> / 08</div>
+<div class="nav">
+  <button id="prev">←</button>
+  <button id="next">→</button>
+</div>
+<div class="hint">← → 方向键 / 点击按钮翻页</div>
+
+<script>
+const slides=[...document.querySelectorAll('.slide')];
+let idx=0;
+function go(i){
+  idx=(i+slides.length)%slides.length;
+  slides.forEach((s,n)=>s.classList.toggle('active',n===idx));
+  document.getElementById('cur').textContent=String(idx+1).padStart(2,'0');
+  document.getElementById('prog').style.width=((idx+1)/slides.length*100)+'%';
+}
+document.getElementById('next').onclick=()=>go(idx+1);
+document.getElementById('prev').onclick=()=>go(idx-1);
+addEventListener('keydown',e=>{
+  if(['ArrowRight','ArrowDown',' ','PageDown'].includes(e.key))go(idx+1);
+  if(['ArrowLeft','ArrowUp','PageUp'].includes(e.key))go(idx-1);
+});
+let tx=0;
+addEventListener('touchstart',e=>tx=e.touches[0].clientX);
+addEventListener('touchend',e=>{const d=e.changedTouches[0].clientX-tx;if(d<-50)go(idx+1);if(d>50)go(idx-1)});
+
+const mqText='拒绝被定义 ✦ 无限可能 ✦ 深度思考 ✦ 持续升级 ✦ 勇于尝试 ✦ 坚持到底 ✦ 经济自由 ✦ 交个朋友 ✦ ';
+document.getElementById('mq1').textContent=mqText.repeat(4);
+document.getElementById('mq2').textContent=mqText.repeat(4);
+go(0);
+</script>
 </body>
 </html>
