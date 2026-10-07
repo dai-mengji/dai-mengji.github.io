@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>大一自我介绍 · 不被定义</title>
+<title>胡可馨 · 大一自我介绍 · 不被定义</title>
 <link href="https://fonts.googleapis.com/css2?family=ZCOOL+QingKe+HuangYou&family=Noto+Sans+SC:wght@300;400;700;900&family=Archivo+Black&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -15,99 +15,129 @@
   --line:rgba(244,242,236,.14);
 }
 *{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--ink);
-  font-family:'Noto Sans SC',sans-serif;cursor:crosshair}
+  font-family:'Noto Sans SC','Microsoft YaHei','PingFang SC',sans-serif;
+  -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+  text-rendering:optimizeLegibility}
 
-/* ---------- 背景氛围 ---------- */
-.grain{position:fixed;inset:0;pointer-events:none;z-index:60;opacity:.55;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");}
-.blob{position:fixed;border-radius:50%;filter:blur(90px);opacity:.35;z-index:0;pointer-events:none}
-.b1{width:46vw;height:46vw;background:var(--volt);top:-12vw;left:-10vw;animation:drift 14s ease-in-out infinite alternate}
-.b2{width:38vw;height:38vw;background:var(--acid);bottom:-14vw;right:-8vw;opacity:.18;animation:drift 18s ease-in-out infinite alternate-reverse}
-.b3{width:24vw;height:24vw;background:var(--pink);top:40%;left:60%;opacity:.14;animation:drift 11s ease-in-out infinite alternate}
+.disp,.kicker,.bignum,.pager,.card .lv,.card h4,.site-card .site-tag,.site-card h4,
+.mq-track,.nametag{font-synthesis-weight:none}
+
+/* ---------- 背景 ---------- */
+.blob{position:fixed;border-radius:50%;filter:blur(90px);z-index:0;pointer-events:none}
+.b1{width:46vw;height:46vw;background:var(--volt);top:-12vw;left:-10vw;opacity:.3;animation:drift 14s ease-in-out infinite alternate}
+.b2{width:38vw;height:38vw;background:var(--acid);bottom:-14vw;right:-8vw;opacity:.16;animation:drift 18s ease-in-out infinite alternate-reverse}
+.b3{width:24vw;height:24vw;background:var(--pink);top:40%;left:60%;opacity:.12;animation:drift 11s ease-in-out infinite alternate}
 @keyframes drift{from{transform:translate(0,0) scale(1)}to{transform:translate(6vw,4vh) scale(1.15)}}
 .gridlines{position:fixed;inset:0;z-index:0;pointer-events:none;
   background:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
-  background-size:80px 80px;mask-image:radial-gradient(circle at 50% 50%,black 20%,transparent 85%)}
+  background-size:80px 80px;
+  -webkit-mask-image:radial-gradient(circle at 50% 50%,black 20%,transparent 85%);
+  mask-image:radial-gradient(circle at 50% 50%,black 20%,transparent 85%)}
 
 /* ---------- 幻灯结构 ---------- */
 .slide{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;
-  padding:6vh 7vw;opacity:0;visibility:hidden;transform:scale(1.04);
-  transition:opacity .55s ease,transform .55s ease,visibility .55s;z-index:1}
-.slide.active{opacity:1;visibility:visible;transform:scale(1);z-index:5}
+  padding:6vh 7vw;opacity:0;visibility:hidden;
+  transition:opacity .45s ease,visibility .45s;z-index:1}
+.slide.active{opacity:1;visibility:visible;z-index:5}
 .wrap{width:100%;max-width:1180px;position:relative}
 
-/* 逐层入场 */
-.slide .rv{opacity:0;transform:translateY(38px)}
-.slide.active .rv{animation:rise .8s cubic-bezier(.2,.8,.2,1) forwards}
-.slide.active .rv:nth-of-type(1){animation-delay:.10s}
-.slide.active .rv:nth-of-type(2){animation-delay:.24s}
-.slide.active .rv:nth-of-type(3){animation-delay:.38s}
-.slide.active .rv:nth-of-type(4){animation-delay:.52s}
-.slide.active .rv:nth-of-type(5){animation-delay:.66s}
-.slide.active .rv:nth-of-type(6){animation-delay:.80s}
-@keyframes rise{to{opacity:1;transform:translateY(0)}}
+.slide .rv{opacity:0}
+.slide.active .rv{animation:rise .7s ease-out forwards}
+.slide.active .rv:nth-child(1){animation-delay:.08s}
+.slide.active .rv:nth-child(2){animation-delay:.22s}
+.slide.active .rv:nth-child(3){animation-delay:.36s}
+.slide.active .rv:nth-child(4){animation-delay:.50s}
+.slide.active .rv:nth-child(5){animation-delay:.64s}
+.slide.active .rv:nth-child(6){animation-delay:.78s}
+@keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
 
 /* ---------- 排版 ---------- */
-.disp{font-family:'ZCOOL QingKe HuangYou',sans-serif;line-height:1.05;letter-spacing:.02em}
-.kicker{font-family:'Archivo Black',sans-serif;font-size:.8rem;letter-spacing:.4em;color:var(--acid);text-transform:uppercase}
-.bignum{font-family:'Archivo Black',sans-serif;font-size:clamp(6rem,16vw,13rem);
-  -webkit-text-stroke:2px rgba(244,242,236,.28);color:transparent;position:absolute;
-  top:-.55em;right:0;z-index:-1;user-select:none}
+.disp{font-family:'ZCOOL QingKe HuangYou','Microsoft YaHei',sans-serif;
+  font-weight:700;line-height:1.12;letter-spacing:.02em}
+.kicker{font-family:'Archivo Black','Arial Black',sans-serif;font-weight:400;
+  font-size:.8rem;letter-spacing:.3em;color:var(--acid);text-transform:uppercase}
+.chap{display:flex;align-items:center;gap:1.3rem;flex-wrap:wrap;margin-bottom:1.5rem}
+.bignum{font-family:'Archivo Black',sans-serif;font-weight:400;font-size:clamp(2.2rem,5.5vw,3.8rem);
+  line-height:1;color:rgba(244,242,236,.28);user-select:none;flex:none}
 .acid{color:var(--acid)}
-.outl{color:transparent;-webkit-text-stroke:2px var(--ink)}
+.dim{color:rgba(244,242,236,.55)}
+.h2{font-size:clamp(2.6rem,7vw,5.5rem);margin-bottom:1.4rem}
+.h2-big{font-size:clamp(3rem,9vw,7rem);margin-bottom:1.4rem}
 
 /* ---------- 封面 ---------- */
-.cover h1{font-size:clamp(4.2rem,13vw,11rem);position:relative}
-.cover h1 .row2{margin-left:.9em}
-.tag{display:inline-block;border:2px solid var(--acid);color:var(--acid);
-  padding:.45em 1.1em;font-weight:700;transform:rotate(-2deg);margin-top:2.2rem;font-size:1.05rem}
-.cover .sub{margin-top:2rem;color:rgba(244,242,236,.6);font-weight:300;letter-spacing:.25em}
-.spinbadge{position:absolute;right:4vw;top:-6vh;width:130px;height:130px;animation:spin 12s linear infinite}
+.cover h1{font-size:clamp(4.2rem,13vw,11rem)}
+.cover h1 .row2{margin-left:.7em}
+.cover-top{display:flex;align-items:flex-start;justify-content:space-between;gap:1.4rem;margin-bottom:1.5rem}
+.badge-box{flex:none}
+.spinbadge{display:block;width:clamp(84px,9vw,116px);height:auto;animation:spin 12s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
+.nametag{display:inline-block;background:var(--acid);color:#0b0b10;
+  font-family:'ZCOOL QingKe HuangYou','Microsoft YaHei',sans-serif;font-weight:700;
+  font-size:clamp(1.4rem,3vw,2.1rem);padding:.35em .9em;letter-spacing:.18em;margin-top:.4rem}
+.tag{display:inline-block;border:2px solid var(--acid);color:var(--acid);
+  padding:.45em 1.1em;font-weight:700;margin-top:2.2rem;font-size:1.05rem}
+.cover .sub{margin-top:2rem;color:rgba(244,242,236,.7);font-weight:400;letter-spacing:.25em}
 
 /* 跑马灯 */
-.marquee{position:fixed;left:0;right:0;z-index:40;overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
-  background:rgba(11,11,16,.6);backdrop-filter:blur(6px)}
+.marquee{position:fixed;left:0;right:0;z-index:40;overflow:hidden;
+  background:rgba(11,11,16,.92);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .mq-track{display:flex;gap:3rem;white-space:nowrap;padding:.55rem 0;
-  font-family:'ZCOOL QingKe HuangYou';letter-spacing:.25em;font-size:.85rem;color:var(--acid);
-  animation:mq 22s linear infinite;width:max-content}
+  font-family:'ZCOOL QingKe HuangYou','Microsoft YaHei',sans-serif;letter-spacing:.25em;
+  font-size:.85rem;color:var(--acid);animation:mq 26s linear infinite;width:max-content}
 @keyframes mq{to{transform:translateX(-50%)}}
 .mq-top{top:0}.mq-bot{bottom:0}
 .mq-bot .mq-track{animation-direction:reverse;color:var(--volt)}
 
-/* ---------- 内容卡 ---------- */
-.lead{font-size:clamp(1.6rem,3.2vw,2.6rem);font-weight:900;line-height:1.5;max-width:20em}
+/* ---------- 内容区 ---------- */
+.lead{font-size:clamp(1.6rem,3.2vw,2.6rem);font-weight:900;line-height:1.55;max-width:20em}
 .lead em{font-style:normal;color:var(--acid);position:relative}
 .lead em::after{content:"";position:absolute;left:0;bottom:.05em;width:100%;height:.35em;
   background:var(--acid);opacity:.22;z-index:-1}
-.body{margin-top:2rem;font-weight:300;font-size:clamp(1rem,1.5vw,1.2rem);
-  line-height:2;color:rgba(244,242,236,.75);max-width:34em}
+.body{margin-top:1.8rem;font-weight:400;font-size:clamp(1.05rem,1.5vw,1.25rem);
+  line-height:2;color:rgba(244,242,236,.85);max-width:34em}
 
 .chips{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:2.2rem}
 .chip{border:1.5px solid var(--line);padding:.55em 1.2em;border-radius:999px;font-weight:700;
-  font-size:1rem;background:rgba(244,242,236,.04);transition:.3s}
-.chip:hover{border-color:var(--acid);color:var(--acid);transform:translateY(-3px) rotate(-1deg)}
+  font-size:1.02rem;background:rgba(244,242,236,.04);transition:border-color .3s,color .3s}
+.chip:hover{border-color:var(--acid);color:var(--acid)}
 .chip.hot{background:var(--acid);color:#0b0b10;border-color:var(--acid)}
 
 /* 经验条 */
 .bars{margin-top:2.4rem;display:grid;gap:1.1rem;max-width:560px}
-.bar .lab{display:flex;justify-content:space-between;font-size:.85rem;letter-spacing:.15em;margin-bottom:.4rem;color:rgba(244,242,236,.7)}
+.bar .lab{display:flex;justify-content:space-between;font-size:.85rem;letter-spacing:.15em;margin-bottom:.4rem;color:rgba(244,242,236,.75)}
 .bar .track{height:10px;background:rgba(244,242,236,.08);overflow:hidden}
 .bar .fill{height:100%;width:0;background:repeating-linear-gradient(45deg,var(--acid) 0 8px,#0b0b10 8px 16px)}
 .slide.active .bar .fill{transition:width 1.2s cubic-bezier(.2,.8,.2,1) .6s;width:var(--w)}
 
 /* 奖项卡 */
-.awards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:2.6rem}
+.awards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.2rem;margin-top:2.4rem}
 .card{border:2px solid var(--line);padding:1.6rem 1.4rem;background:rgba(244,242,236,.03);
-  transition:.35s;position:relative;overflow:hidden}
-.card:hover{transform:translateY(-8px);border-color:var(--acid)}
+  transition:border-color .35s;position:relative;overflow:hidden}
+.card:hover{border-color:var(--acid)}
 .card::before{content:"";position:absolute;top:0;left:-100%;width:100%;height:100%;
   background:linear-gradient(90deg,transparent,rgba(201,255,46,.12),transparent);transition:.6s}
 .card:hover::before{left:100%}
-.card .lv{font-family:'Archivo Black';font-size:.72rem;letter-spacing:.3em;color:var(--pink)}
-.card h4{font-family:'ZCOOL QingKe HuangYou';font-size:1.5rem;margin:.6rem 0 .4rem}
-.card p{font-size:.9rem;color:rgba(244,242,236,.6);font-weight:300;line-height:1.7}
+.card .lv{font-family:'Archivo Black',sans-serif;font-weight:400;font-size:.72rem;letter-spacing:.3em;color:var(--pink)}
+.card h4{font-family:'ZCOOL QingKe HuangYou','Microsoft YaHei',sans-serif;font-weight:700;font-size:1.5rem;margin:.6rem 0 .4rem}
+.card p{font-size:.95rem;color:rgba(244,242,236,.72);font-weight:400;line-height:1.7}
+
+/* ---------- 作品站点卡（可点击跳转） ---------- */
+.sites{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.2rem;margin-top:2.4rem;max-width:780px}
+.site-card{display:block;border:2px solid var(--line);padding:1.6rem 1.5rem;
+  background:rgba(244,242,236,.03);text-decoration:none;color:var(--ink);
+  transition:border-color .35s,background .35s,transform .35s;position:relative;overflow:hidden;cursor:pointer}
+.site-card:hover,.site-card:active{border-color:var(--acid);background:rgba(201,255,46,.07);transform:translateY(-4px)}
+.site-card::before{content:"";position:absolute;top:0;left:-100%;width:100%;height:100%;
+  background:linear-gradient(90deg,transparent,rgba(201,255,46,.14),transparent);transition:.6s}
+.site-card:hover::before,.site-card:active::before{left:100%}
+.site-card .site-tag{font-family:'Archivo Black',sans-serif;font-weight:400;font-size:.72rem;letter-spacing:.3em;color:var(--pink)}
+.site-card h4{font-family:'ZCOOL QingKe HuangYou','Microsoft YaHei',sans-serif;font-weight:700;font-size:1.6rem;margin:.6rem 0 .4rem}
+.site-card p{font-size:.95rem;color:rgba(244,242,236,.72);font-weight:400;line-height:1.7}
+.site-card .site-link{display:inline-block;margin-top:1.1rem;font-weight:700;color:var(--acid);
+  font-size:.95rem;letter-spacing:.12em}
+.site-card:hover .site-link,.site-card:active .site-link{text-decoration:underline}
 
 /* 目标页 */
 .goal{font-size:clamp(3rem,8vw,6.5rem)}
@@ -116,26 +146,49 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--ink);
 
 /* 总结页 */
 .sum{font-size:clamp(1.8rem,4.2vw,3.4rem);line-height:1.7;font-weight:900}
-.sum .w{display:inline-block;transition:.3s}
-.sum .w:hover{color:var(--acid);transform:rotate(-3deg) scale(1.12)}
+.sum .w{transition:color .3s}
+.sum .w:hover{color:var(--acid)}
 
 /* ---------- 导航 ---------- */
 .nav{position:fixed;bottom:4.2rem;right:5vw;z-index:50;display:flex;gap:.7rem;align-items:center}
 .nav button{width:52px;height:52px;background:transparent;border:2px solid var(--line);color:var(--ink);
   font-size:1.2rem;cursor:pointer;transition:.3s;font-family:inherit}
-.nav button:hover{background:var(--acid);color:#0b0b10;border-color:var(--acid);transform:rotate(-6deg)}
-.pager{position:fixed;bottom:4.6rem;left:5vw;z-index:50;font-family:'Archivo Black';font-size:.85rem;letter-spacing:.2em;color:rgba(244,242,236,.5)}
+.nav button:hover{background:var(--acid);color:#0b0b10;border-color:var(--acid)}
+.pager{position:fixed;bottom:4.6rem;left:5vw;z-index:50;font-family:'Archivo Black',sans-serif;
+  font-weight:400;font-size:.85rem;letter-spacing:.2em;color:rgba(244,242,236,.5)}
 .pager b{color:var(--acid);font-size:1.4rem}
-.progress{position:fixed;top:0;left:0;height:4px;background:var(--acid);z-index:70;transition:width .5s cubic-bezier(.2,.8,.2,1);
-  box-shadow:0 0 14px var(--acid)}
-.hint{position:fixed;bottom:1.1rem;left:50%;transform:translateX(-50%);z-index:50;font-size:.72rem;
-  letter-spacing:.3em;color:rgba(244,242,236,.35)}
+.progress{position:fixed;top:0;left:0;height:4px;background:var(--acid);z-index:70;
+  transition:width .5s cubic-bezier(.2,.8,.2,1);box-shadow:0 0 14px var(--acid)}
+.hint{position:fixed;bottom:2.9rem;left:50%;transform:translateX(-50%);z-index:50;font-size:.72rem;
+  letter-spacing:.3em;color:rgba(244,242,236,.4)}
+
+/* ---------- 手机端适配 ---------- */
+@media (max-width:700px){
+  .slide{padding:5vh 6vw}
+  .cover h1{font-size:clamp(3.4rem,12vw,5.2rem)}
+  .nametag{font-size:1.3rem}
+  .chap{gap:.9rem;margin-bottom:1.1rem}
+  .h2{font-size:clamp(2.1rem,8.5vw,3rem);margin-bottom:1rem}
+  .h2-big{font-size:clamp(2.6rem,10vw,4rem)}
+  .lead{font-size:clamp(1.3rem,5.5vw,1.7rem)}
+  .body{line-height:1.85;margin-top:1.3rem}
+  .awards,.sites{margin-top:1.8rem;gap:.9rem}
+  .card,.site-card{padding:1.2rem 1.05rem}
+  .card h4,.site-card h4{font-size:1.3rem}
+  .site-card p,.card p{font-size:.9rem}
+  .sum{font-size:clamp(1.45rem,5.8vw,2.1rem)}
+  .goal{font-size:clamp(2.4rem,9.5vw,3.6rem)}
+  .nav button{width:46px;height:46px}
+  .spinbadge{width:76px}
+  .hint{display:none}
+  .mq-track{font-size:.75rem}
+}
 </style>
 </head>
 <body>
 
 <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
-<div class="gridlines"></div><div class="grain"></div>
+<div class="gridlines"></div>
 <div class="progress" id="prog"></div>
 
 <div class="marquee mq-top"><div class="mq-track" id="mq1"></div></div>
@@ -144,13 +197,18 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--ink);
 <!-- 01 封面 -->
 <section class="slide cover active">
   <div class="wrap">
-    <svg class="spinbadge rv" viewBox="0 0 100 100">
-      <defs><path id="cir" d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0"/></defs>
-      <text fill="#c9ff2e" font-size="10.5" letter-spacing="2"><textPath href="#cir">HELLO FRESHMAN · 你好大一 · 2026 ·</textPath></text>
-      <circle cx="50" cy="50" r="5" fill="#ff4fa3"/>
-    </svg>
-    <div class="kicker rv">SELF INTRODUCTION / 自我介绍</div>
-    <h1 class="disp rv">大一<span class="outl">新生</span><br><span class="row2">请多<span class="acid">关照</span></span></h1>
+    <div class="cover-top rv">
+      <div class="kicker">SELF INTRODUCTION / 自我介绍</div>
+      <div class="badge-box">
+        <svg class="spinbadge" viewBox="0 0 100 100">
+          <defs><path id="cir" d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0"/></defs>
+          <text fill="#c9ff2e" font-size="11.5" letter-spacing="2"><textPath href="#cir">HELLO FRESHMAN · 你好大一 · 2026 ·</textPath></text>
+          <circle cx="50" cy="50" r="5" fill="#ff4fa3"/>
+        </svg>
+      </div>
+    </div>
+    <div class="rv"><span class="nametag">胡可馨 · HU KEXIN</span></div>
+    <h1 class="disp rv">大一<span class="dim">新生</span><br><span class="row2">请多<span class="acid">关照</span></span></h1>
     <div class="rv"><span class="tag">⚠ 本人不接受被定义</span></div>
     <p class="sub rv">拒绝标签 · 深度思考 · 无限可能</p>
   </div>
@@ -159,9 +217,11 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--ink);
 <!-- 02 不被定义 -->
 <section class="slide">
   <div class="wrap">
-    <div class="bignum">01</div>
-    <div class="kicker rv">CHAPTER 01 / 无限可能</div>
-    <h2 class="disp rv" style="font-size:clamp(3rem,7vw,5.5rem);margin:1rem 0">我不接受<span class="acid">被定义</span></h2>
+    <div class="chap rv">
+      <div class="bignum">01</div>
+      <div class="kicker">CHAPTER 01 / 无限可能</div>
+    </div>
+    <h2 class="disp h2 rv">我不接受<span class="acid">被定义</span></h2>
     <p class="lead rv">标签是别人贴的，<br>人生是<em>流动</em>的。</p>
     <p class="body rv">别人怎么定义我，我不太在意。未来是未知的，所以人有无限可能。人的性格与行为是流动的——我们都有机会，成为自己想成为的人。</p>
     <div class="chips rv">
@@ -174,9 +234,11 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--ink);
 <!-- 03 深度思考 -->
 <section class="slide">
   <div class="wrap">
-    <div class="bignum">02</div>
-    <div class="kicker rv">CHAPTER 02 / 探索自我</div>
-    <h2 class="disp rv" style="font-size:clamp(3rem,7vw,5.5rem);margin:1rem 0">深度思考<span class="outl">爱好者</span></h2>
+    <div class="chap rv">
+      <div class="bignum">02</div>
+      <div class="kicker">CHAPTER 02 / 探索自我</div>
+    </div>
+    <h2 class="disp h2 rv">深度思考<span class="dim">爱好者</span></h2>
     <p class="lead rv">热爱<em>心理学</em>与<em>哲学</em>，<br>执着于探索自我。</p>
     <div class="chips rv">
       <span class="chip">🧠 心理学</span>
@@ -188,12 +250,41 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--ink);
   </div>
 </section>
 
-<!-- 04 班委经验 -->
+<!-- 04 手作小程序（新增） -->
 <section class="slide">
   <div class="wrap">
-    <div class="bignum">03</div>
-    <div class="kicker rv">CHAPTER 03 / 实战履历</div>
-    <h2 class="disp rv" style="font-size:clamp(3rem,7vw,5.5rem);margin:1rem 0">班委经验<span class="acid">拉满</span></h2>
+    <div class="chap rv">
+      <div class="bignum">03</div>
+      <div class="kicker">CHAPTER 03 / 把想法做出来</div>
+    </div>
+    <h2 class="disp h2 rv">把想法<span class="acid">做出来</span></h2>
+    <p class="lead rv">平时喜欢捣鼓<em>有趣的小程序</em>，<br>让脑子里的点子，真正<em>跑起来</em>。</p>
+    <p class="body rv">下面两个都是我从零搭出来的小作品——心理学小站 &amp; 互动小游戏，欢迎点开玩一玩、提提意见 👇</p>
+    <div class="sites">
+      <a class="site-card rv" href="https://dai-mengji.github.io/psychology/" target="_blank" rel="noopener">
+        <div class="site-tag">SITE 01 / 心理学</div>
+        <h4>🧠 心理学小站</h4>
+        <p>把热爱的心理学，搭成了一个可以逛的小角落</p>
+        <span class="site-link">点我逛逛 →</span>
+      </a>
+      <a class="site-card rv" href="https://dai-mengji.github.io/game/" target="_blank" rel="noopener">
+        <div class="site-tag">SITE 02 / 小游戏</div>
+        <h4>🎮 互动小游戏</h4>
+        <p>亲手写的趣味小游戏，等你来挑战纪录</p>
+        <span class="site-link">点我开玩 →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- 05 班委经验 -->
+<section class="slide">
+  <div class="wrap">
+    <div class="chap rv">
+      <div class="bignum">04</div>
+      <div class="kicker">CHAPTER 04 / 实战履历</div>
+    </div>
+    <h2 class="disp h2 rv">班委经验<span class="acid">拉满</span></h2>
     <p class="body rv">从小学到现在，班委经历从未间断。除了团支书和体育委员，其他岗位基本都当过——大大小小的事都处理过。</p>
     <div class="bars">
       <div class="bar rv"><div class="lab"><span>班委年限</span><span>MAX</span></div><div class="track"><div class="fill" style="--w:100%"></div></div></div>
@@ -208,12 +299,14 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--ink);
   </div>
 </section>
 
-<!-- 05 勇于尝试 -->
+<!-- 06 勇于尝试 -->
 <section class="slide">
   <div class="wrap">
-    <div class="bignum">04</div>
-    <div class="kicker rv">CHAPTER 04 / 敢试敢拼</div>
-    <h2 class="disp rv" style="font-size:clamp(3rem,7vw,5.5rem);margin:1rem 0">勇于尝试，<span class="acid">坚持到底</span></h2>
+    <div class="chap rv">
+      <div class="bignum">05</div>
+      <div class="kicker">CHAPTER 05 / 敢试敢拼</div>
+    </div>
+    <h2 class="disp h2 rv">勇于尝试，<span class="acid">坚持到底</span></h2>
     <div class="awards">
       <div class="card rv"><div class="lv">NATIONAL 国家级</div><h4>英语奖项</h4><p>国家级奖项 · 初赛 + 复赛 双双拿下</p></div>
       <div class="card rv"><div class="lv">PROVINCIAL 省级</div><h4>生物竞赛</h4><p>省级二等奖，理科细胞里也有热爱</p></div>
@@ -222,12 +315,14 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--ink);
   </div>
 </section>
 
-<!-- 06 做朋友 -->
+<!-- 07 做朋友 -->
 <section class="slide">
   <div class="wrap" style="text-align:center">
-    <div class="bignum" style="right:auto;left:0">05</div>
-    <div class="kicker rv">CHAPTER 05 / 社交信号</div>
-    <h2 class="disp rv" style="font-size:clamp(3.4rem,9vw,7rem);margin:1.5rem 0">想和你们<br><span class="acid">成为朋友</span></h2>
+    <div class="chap rv" style="justify-content:center">
+      <div class="bignum">06</div>
+      <div class="kicker">CHAPTER 06 / 社交信号</div>
+    </div>
+    <h2 class="disp h2-big rv">想和你们<br><span class="acid">成为朋友</span></h2>
     <p class="lead rv" style="margin:0 auto">一起快乐度过<em>大学四年</em> ✦</p>
     <div class="chips rv" style="justify-content:center">
       <span class="chip hot">好友申请：已发送</span>
@@ -236,18 +331,20 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--ink);
   </div>
 </section>
 
-<!-- 07 目标 -->
+<!-- 08 目标 -->
 <section class="slide">
   <div class="wrap">
-    <div class="bignum">06</div>
-    <div class="kicker rv">CHAPTER 06 / 四年之约</div>
-    <h2 class="disp rv" style="margin:1rem 0;font-size:clamp(2.6rem,5vw,4rem)">我的大学目标</h2>
+    <div class="chap rv">
+      <div class="bignum">07</div>
+      <div class="kicker">CHAPTER 07 / 四年之约</div>
+    </div>
+    <h2 class="disp h2 rv">我的大学目标</h2>
     <h3 class="disp goal rv"><span class="flash">▸</span> 实现<span class="acid">经济自由</span></h3>
     <p class="body rv">我相信人的性格和行为是流动的——我们可以塑造自己，也有机会活成自己想要的样子。</p>
   </div>
 </section>
 
-<!-- 08 总结 -->
+<!-- 09 总结 -->
 <section class="slide">
   <div class="wrap">
     <div class="kicker rv">ONE SENTENCE / 一句话总结</div>
@@ -260,12 +357,12 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--ink);
   </div>
 </section>
 
-<div class="pager"><b id="cur">01</b> / 08</div>
+<div class="pager"><b id="cur">01</b> / 09</div>
 <div class="nav">
   <button id="prev">←</button>
   <button id="next">→</button>
 </div>
-<div class="hint">← → 方向键 / 点击按钮翻页</div>
+<div class="hint">← → 方向键 / 空格 / 滑动 翻页</div>
 
 <script>
 const slides=[...document.querySelectorAll('.slide')];
@@ -293,3 +390,4 @@ go(0);
 </script>
 </body>
 </html>
+
