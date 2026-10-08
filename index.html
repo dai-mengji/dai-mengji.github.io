@@ -123,7 +123,32 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--ink);
 .card h4{font-family:'ZCOOL QingKe HuangYou','Microsoft YaHei',sans-serif;font-weight:700;font-size:1.5rem;margin:.6rem 0 .4rem}
 .card p{font-size:.95rem;color:rgba(244,242,236,.72);font-weight:400;line-height:1.7}
 
-/* ---------- 作品站点卡（可点击跳转） ---------- */
+/* 可点击的证书卡 */
+.clickable{cursor:pointer}
+.cert-hint{display:inline-flex;align-items:center;gap:.45em;margin-top:1rem;
+  font-weight:700;font-size:.88rem;color:var(--acid);letter-spacing:.12em;
+  animation:hintblink 2.2s ease-in-out infinite}
+@keyframes hintblink{50%{opacity:.5}}
+
+/* ---------- 证书灯箱 ---------- */
+.lightbox{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;
+  background:rgba(11,11,16,.95);opacity:0;visibility:hidden;transition:.3s;padding:4vh 4vw}
+.lightbox.open{opacity:1;visibility:visible}
+.lb-inner{display:flex;flex-direction:column;align-items:center;gap:1rem;max-width:94vw}
+.lb-tabs{display:flex;gap:.8rem}
+.lb-tab{border:2px solid var(--line);background:transparent;color:var(--ink);
+  padding:.5em 1.3em;font-family:'ZCOOL QingKe HuangYou','Microsoft YaHei',sans-serif;
+  font-weight:700;font-size:1.05rem;letter-spacing:.15em;cursor:pointer;transition:.25s}
+.lb-tab.active{background:var(--acid);color:#0b0b10;border-color:var(--acid)}
+.lb-frame{background:#fff;padding:10px;max-height:74vh;display:flex;align-items:center}
+.lb-frame img{display:block;max-height:70vh;max-width:min(560px,86vw);width:auto}
+.lb-cap{font-size:.85rem;letter-spacing:.2em;color:rgba(244,242,236,.65);text-align:center}
+.lb-close{position:fixed;top:3vh;right:4vw;width:52px;height:52px;
+  border:2px solid var(--line);background:rgba(11,11,16,.6);color:var(--ink);
+  font-size:1.3rem;cursor:pointer;transition:.3s;z-index:101}
+.lb-close:hover{background:var(--pink);border-color:var(--pink);color:#0b0b10}
+
+/* ---------- 作品站点卡 ---------- */
 .sites{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.2rem;margin-top:2.4rem;max-width:780px}
 .site-card{display:block;border:2px solid var(--line);padding:1.6rem 1.5rem;
   background:rgba(244,242,236,.03);text-decoration:none;color:var(--ink);
@@ -182,6 +207,10 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--ink);
   .spinbadge{width:76px}
   .hint{display:none}
   .mq-track{font-size:.75rem}
+  .lb-frame{max-height:62vh;padding:8px}
+  .lb-frame img{max-height:58vh}
+  .lb-tab{font-size:.95rem;padding:.45em 1em}
+  .lb-close{width:44px;height:44px;top:2vh;right:4vw}
 }
 </style>
 </head>
@@ -250,7 +279,7 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--ink);
   </div>
 </section>
 
-<!-- 04 手作小程序（新增） -->
+<!-- 04 手作小程序 -->
 <section class="slide">
   <div class="wrap">
     <div class="chap rv">
@@ -308,7 +337,12 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--ink);
     </div>
     <h2 class="disp h2 rv">勇于尝试，<span class="acid">坚持到底</span></h2>
     <div class="awards">
-      <div class="card rv"><div class="lv">NATIONAL 国家级</div><h4>英语奖项</h4><p>国家级奖项 · 初赛 + 复赛 双双拿下</p></div>
+      <div class="card clickable rv" id="certCard">
+        <div class="lv">NATIONAL 国家级</div>
+        <h4>英语奖项</h4>
+        <p>国家级奖项 · 初赛 + 复赛 双双拿下</p>
+        <span class="cert-hint">🔍 点击卡片，查看证书原件</span>
+      </div>
       <div class="card rv"><div class="lv">PROVINCIAL 省级</div><h4>生物竞赛</h4><p>省级二等奖，理科细胞里也有热爱</p></div>
       <div class="card rv"><div class="lv">CAMPUS 校内</div><h4>小荣誉 ×N</h4><p>认定的事，一般都会坚持到底 💪</p></div>
     </div>
@@ -357,6 +391,19 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--ink);
   </div>
 </section>
 
+<!-- 证书灯箱 -->
+<div class="lightbox" id="lightbox">
+  <button class="lb-close" id="lbClose" title="关闭">✕</button>
+  <div class="lb-inner">
+    <div class="lb-tabs">
+      <button class="lb-tab active" data-img="https://t1.chatglm.cn/file/6ac75b8c5126fa4a7980ae55.jpg?expired_at=1791882024&sign=12cf15b40a00e76facb4b8746861ad09&ext=jpg" data-cap="第22届「外研社杯」全国中学生外语素养大赛 · 顺利通过初赛">初赛证书</button>
+      <button class="lb-tab" data-img="https://t1.chatglm.cn/file/6ac75b8c5126fa4a7980ae54.jpg?expired_at=1791882024&sign=35720b225ed1fa907f8ab81761b3c12e&ext=jpg" data-cap="第22届「外研社杯」全国中学生外语素养大赛 · 顺利通过复赛">复赛证书</button>
+    </div>
+    <div class="lb-frame"><img id="lbImg" src="https://t1.chatglm.cn/file/6ac75b8c5126fa4a7980ae55.jpg?expired_at=1791882024&sign=12cf15b40a00e76facb4b8746861ad09&ext=jpg" alt="外研社杯英语大赛证书"></div>
+    <p class="lb-cap" id="lbCap">第22届「外研社杯」全国中学生外语素养大赛 · 顺利通过初赛</p>
+  </div>
+</div>
+
 <div class="pager"><b id="cur">01</b> / 09</div>
 <div class="nav">
   <button id="prev">←</button>
@@ -375,10 +422,39 @@ function go(i){
 }
 document.getElementById('next').onclick=()=>go(idx+1);
 document.getElementById('prev').onclick=()=>go(idx-1);
+
+/* ---------- 证书灯箱逻辑 ---------- */
+const lb=document.getElementById('lightbox');
+const lbImg=document.getElementById('lbImg');
+const lbCap=document.getElementById('lbCap');
+const tabs=[...document.querySelectorAll('.lb-tab')];
+let tabIdx=0;
+function setTab(n){
+  tabIdx=n;
+  tabs.forEach((t,i)=>t.classList.toggle('active',i===n));
+  lbImg.src=tabs[n].dataset.img;
+  lbCap.textContent=tabs[n].dataset.cap;
+}
+function openLB(){setTab(0);lb.classList.add('open');}
+function closeLB(){lb.classList.remove('open');}
+tabs.forEach((t,i)=>t.addEventListener('click',e=>{e.stopPropagation();setTab(i);}));
+document.getElementById('certCard').addEventListener('click',openLB);
+document.getElementById('lbClose').addEventListener('click',closeLB);
+lb.addEventListener('click',e=>{if(e.target===lb)closeLB();});
+lb.addEventListener('touchstart',e=>e.stopPropagation());
+lb.addEventListener('touchend',e=>e.stopPropagation());
+
 addEventListener('keydown',e=>{
+  if(lb.classList.contains('open')){
+    if(e.key==='Escape')closeLB();
+    if(e.key==='ArrowRight')setTab((tabIdx+1)%tabs.length);
+    if(e.key==='ArrowLeft')setTab((tabIdx+tabs.length-1)%tabs.length);
+    return;
+  }
   if(['ArrowRight','ArrowDown',' ','PageDown'].includes(e.key))go(idx+1);
   if(['ArrowLeft','ArrowUp','PageUp'].includes(e.key))go(idx-1);
 });
+
 let tx=0;
 addEventListener('touchstart',e=>tx=e.touches[0].clientX);
 addEventListener('touchend',e=>{const d=e.changedTouches[0].clientX-tx;if(d<-50)go(idx+1);if(d>50)go(idx-1)});
