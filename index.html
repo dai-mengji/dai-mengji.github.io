@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>胡可馨 · 大一自我介绍 · 不被定义</title>
+<title>胡可馨 · 班委竞选 · 不被定义</title>
 <link href="https://fonts.googleapis.com/css2?family=ZCOOL+QingKe+HuangYou&family=Noto+Sans+SC:wght@300;400;700;900&family=Archivo+Black&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -22,7 +22,7 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--ink);
   text-rendering:optimizeLegibility}
 
 .disp,.kicker,.bignum,.pager,.card .lv,.card h4,.site-card .site-tag,.site-card h4,
-.mq-track,.nametag{font-synthesis-weight:none}
+.mq-track,.nametag,.bgm-btn{font-synthesis-weight:none}
 
 /* ---------- 背景 ---------- */
 .blob{position:fixed;border-radius:50%;filter:blur(90px);z-index:0;pointer-events:none}
@@ -36,12 +36,11 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--ink);
   -webkit-mask-image:radial-gradient(circle at 50% 50%,black 20%,transparent 85%);
   mask-image:radial-gradient(circle at 50% 50%,black 20%,transparent 85%)}
 
-/* ---------- 幻灯结构 ---------- */
-.slide{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;
-  padding:6vh 7vw;opacity:0;visibility:hidden;
-  transition:opacity .45s ease,visibility .45s;z-index:1}
+/* ---------- 幻灯结构（wrap 用 margin:auto，内容超高时手机上可滚动） ---------- */
+.slide{position:fixed;inset:0;display:flex;padding:6vh 7vw;opacity:0;visibility:hidden;
+  transition:opacity .45s ease,visibility .45s;z-index:1;overflow-y:auto}
 .slide.active{opacity:1;visibility:visible;z-index:5}
-.wrap{width:100%;max-width:1180px;position:relative}
+.wrap{width:100%;max-width:1180px;position:relative;margin:auto}
 
 .slide .rv{opacity:0}
 .slide.active .rv{animation:rise .7s ease-out forwards}
@@ -51,6 +50,7 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--ink);
 .slide.active .rv:nth-child(4){animation-delay:.50s}
 .slide.active .rv:nth-child(5){animation-delay:.64s}
 .slide.active .rv:nth-child(6){animation-delay:.78s}
+.slide.active .rv:nth-child(7){animation-delay:.92s}
 @keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
 
 /* ---------- 排版 ---------- */
@@ -67,7 +67,7 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--ink);
 .h2-big{font-size:clamp(3rem,9vw,7rem);margin-bottom:1.4rem}
 
 /* ---------- 封面 ---------- */
-.cover h1{font-size:clamp(4.2rem,13vw,11rem)}
+.cover h1{font-size:clamp(3.8rem,11.5vw,9rem)}
 .cover h1 .row2{margin-left:.7em}
 .cover-top{display:flex;align-items:flex-start;justify-content:space-between;gap:1.4rem;margin-bottom:1.5rem}
 .badge-box{flex:none}
@@ -77,8 +77,16 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--ink);
   font-family:'ZCOOL QingKe HuangYou','Microsoft YaHei',sans-serif;font-weight:700;
   font-size:clamp(1.4rem,3vw,2.1rem);padding:.35em .9em;letter-spacing:.18em;margin-top:.4rem}
 .tag{display:inline-block;border:2px solid var(--acid);color:var(--acid);
-  padding:.45em 1.1em;font-weight:700;margin-top:2.2rem;font-size:1.05rem}
-.cover .sub{margin-top:2rem;color:rgba(244,242,236,.7);font-weight:400;letter-spacing:.25em}
+  padding:.45em 1.1em;font-weight:700;margin-top:1.7rem;font-size:1.05rem}
+.cover .sub{margin-top:1.3rem;color:rgba(244,242,236,.7);font-weight:400;letter-spacing:.25em}
+
+/* 封面梗图贴纸 */
+.meme-row{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:1rem;margin-top:1.5rem}
+.sticker{display:block;height:clamp(78px,10vw,126px);width:auto;background:#fff;
+  border:3px solid #fff;box-shadow:0 12px 32px rgba(0,0,0,.5)}
+.bubble{background:#fff;color:#111;font-weight:900;
+  font-size:clamp(1rem,1.9vw,1.4rem);padding:.55em 1.1em;letter-spacing:.06em;
+  box-shadow:0 12px 32px rgba(0,0,0,.35)}
 
 /* 跑马灯 */
 .marquee{position:fixed;left:0;right:0;z-index:40;overflow:hidden;
@@ -97,6 +105,8 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--ink);
   background:var(--acid);opacity:.22;z-index:-1}
 .body{margin-top:1.8rem;font-weight:400;font-size:clamp(1.05rem,1.5vw,1.25rem);
   line-height:2;color:rgba(244,242,236,.85);max-width:34em}
+.plabel{margin-top:1.9rem;font-weight:700;font-size:.95rem;letter-spacing:.18em;
+  color:rgba(244,242,236,.65)}
 
 .chips{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:2.2rem}
 .chip{border:1.5px solid var(--line);padding:.55em 1.2em;border-radius:999px;font-weight:700;
@@ -111,7 +121,7 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--ink);
 .bar .fill{height:100%;width:0;background:repeating-linear-gradient(45deg,var(--acid) 0 8px,#0b0b10 8px 16px)}
 .slide.active .bar .fill{transition:width 1.2s cubic-bezier(.2,.8,.2,1) .6s;width:var(--w)}
 
-/* 奖项卡 */
+/* 卡片（奖项/价值通用） */
 .awards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.2rem;margin-top:2.4rem}
 .card{border:2px solid var(--line);padding:1.6rem 1.4rem;background:rgba(244,242,236,.03);
   transition:border-color .35s;position:relative;overflow:hidden}
@@ -149,8 +159,8 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--ink);
 .lb-close:hover{background:var(--pink);border-color:var(--pink);color:#0b0b10}
 
 /* ---------- 作品站点卡 ---------- */
-.sites{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.2rem;margin-top:2.4rem;max-width:780px}
-.site-card{display:block;border:2px solid var(--line);padding:1.6rem 1.5rem;
+.sites{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.2rem;margin-top:1rem;max-width:820px}
+.site-card{display:block;border:2px solid var(--line);padding:1.4rem 1.4rem;
   background:rgba(244,242,236,.03);text-decoration:none;color:var(--ink);
   transition:border-color .35s,background .35s,transform .35s;position:relative;overflow:hidden;cursor:pointer}
 .site-card:hover,.site-card:active{border-color:var(--acid);background:rgba(201,255,46,.07);transform:translateY(-4px)}
@@ -158,21 +168,54 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--ink);
   background:linear-gradient(90deg,transparent,rgba(201,255,46,.14),transparent);transition:.6s}
 .site-card:hover::before,.site-card:active::before{left:100%}
 .site-card .site-tag{font-family:'Archivo Black',sans-serif;font-weight:400;font-size:.72rem;letter-spacing:.3em;color:var(--pink)}
-.site-card h4{font-family:'ZCOOL QingKe HuangYou','Microsoft YaHei',sans-serif;font-weight:700;font-size:1.6rem;margin:.6rem 0 .4rem}
-.site-card p{font-size:.95rem;color:rgba(244,242,236,.72);font-weight:400;line-height:1.7}
-.site-card .site-link{display:inline-block;margin-top:1.1rem;font-weight:700;color:var(--acid);
-  font-size:.95rem;letter-spacing:.12em}
+.site-card h4{font-family:'ZCOOL QingKe HuangYou','Microsoft YaHei',sans-serif;font-weight:700;font-size:1.5rem;margin:.55rem 0 .35rem}
+.site-card p{font-size:.93rem;color:rgba(244,242,236,.72);font-weight:400;line-height:1.7}
+.site-card .site-link{display:inline-block;margin-top:.9rem;font-weight:700;color:var(--acid);
+  font-size:.93rem;letter-spacing:.12em}
 .site-card:hover .site-link,.site-card:active .site-link{text-decoration:underline}
 
-/* 目标页 */
-.goal{font-size:clamp(3rem,8vw,6.5rem)}
-.goal .flash{display:inline-block;animation:flash 1.6s steps(2) infinite}
-@keyframes flash{50%{opacity:.25}}
+/* ---------- 竞选承诺 ---------- */
+.pledges{margin-top:2rem;display:grid;gap:1rem;max-width:860px}
+.pledge{display:flex;gap:1.1rem;align-items:flex-start;border:1.5px solid var(--line);
+  padding:1.05rem 1.25rem;background:rgba(244,242,236,.03);
+  font-size:clamp(.98rem,1.35vw,1.15rem);line-height:1.85;color:rgba(244,242,236,.88)}
+.pledge .ico{flex:none;font-size:1.35rem;line-height:1.5}
+.pledge b{color:var(--acid);margin-right:.35em}
 
-/* 总结页 */
-.sum{font-size:clamp(1.8rem,4.2vw,3.4rem);line-height:1.7;font-weight:900}
-.sum .w{transition:color .3s}
-.sum .w:hover{color:var(--acid)}
+/* ---------- 结尾彩蛋页 ---------- */
+.finale .kicker{margin-bottom:.5rem;display:block;text-align:center}
+.finale .meme-row{margin-top:2.2rem;gap:1.6rem}
+.finale .sticker{height:clamp(110px,15vw,175px)}
+.meme-line{font-size:clamp(1.9rem,4.5vw,3.2rem);text-align:left}
+.finale .meme-row.flip{flex-direction:row-reverse}
+
+/* ---------- BGM 启动按钮 ---------- */
+.bgm-zone{margin-top:2.6rem;display:flex;flex-direction:column;align-items:center;gap:.9rem}
+.bgm-btn{display:inline-flex;align-items:center;gap:.7em;
+  background:var(--acid);color:#0b0b10;border:2px solid var(--acid);
+  font-family:'ZCOOL QingKe HuangYou','Microsoft YaHei',sans-serif;font-weight:700;
+  font-size:clamp(1.15rem,2.4vw,1.6rem);padding:.65em 1.6em;border-radius:999px;
+  cursor:pointer;letter-spacing:.14em;transition:transform .2s,background .3s,color .3s;
+  animation:pulse 1.9s infinite}
+.bgm-btn:hover{transform:scale(1.06)}
+.bgm-btn.playing{background:transparent;color:var(--acid);animation:none;box-shadow:none}
+.eq{display:none;align-items:flex-end;gap:3px;height:1.05em}
+.eq i{width:4px;height:30%;background:#0b0b10;animation:eq .9s ease-in-out infinite}
+.eq i:nth-child(2){animation-delay:.15s}
+.eq i:nth-child(3){animation-delay:.3s}
+.eq i:nth-child(4){animation-delay:.45s}
+.bgm-btn.playing .eq{display:flex}
+.bgm-btn.playing .eq i{background:var(--acid)}
+@keyframes eq{0%,100%{height:30%}50%{height:100%}}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(201,255,46,.55)}70%{box-shadow:0 0 0 22px rgba(201,255,46,0)}100%{box-shadow:0 0 0 0 rgba(201,255,46,0)}}
+.bgm-note{font-size:.82rem;letter-spacing:.28em;color:rgba(244,242,236,.45)}
+.bgm-box{display:none;width:min(430px,92vw);border-radius:12px;overflow:hidden;
+  box-shadow:0 14px 36px rgba(0,0,0,.5)}
+.bgm-box.show{display:block}
+.bgm-box iframe{display:block;width:100%;border:0;height:86px}
+.bgm-fallback{font-size:.8rem;letter-spacing:.1em;color:rgba(244,242,236,.4);
+  text-decoration:none;border-bottom:1px dashed rgba(244,242,236,.3)}
+.bgm-fallback:hover{color:var(--acid);border-color:var(--acid)}
 
 /* ---------- 导航 ---------- */
 .nav{position:fixed;bottom:4.2rem;right:5vw;z-index:50;display:flex;gap:.7rem;align-items:center}
@@ -190,19 +233,21 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--ink);
 /* ---------- 手机端适配 ---------- */
 @media (max-width:700px){
   .slide{padding:5vh 6vw}
-  .cover h1{font-size:clamp(3.4rem,12vw,5.2rem)}
+  .cover h1{font-size:clamp(3rem,11vw,4.6rem)}
   .nametag{font-size:1.3rem}
   .chap{gap:.9rem;margin-bottom:1.1rem}
   .h2{font-size:clamp(2.1rem,8.5vw,3rem);margin-bottom:1rem}
   .h2-big{font-size:clamp(2.6rem,10vw,4rem)}
   .lead{font-size:clamp(1.3rem,5.5vw,1.7rem)}
   .body{line-height:1.85;margin-top:1.3rem}
-  .awards,.sites{margin-top:1.8rem;gap:.9rem}
-  .card,.site-card{padding:1.2rem 1.05rem}
-  .card h4,.site-card h4{font-size:1.3rem}
-  .site-card p,.card p{font-size:.9rem}
-  .sum{font-size:clamp(1.45rem,5.8vw,2.1rem)}
-  .goal{font-size:clamp(2.4rem,9.5vw,3.6rem)}
+  .plabel{margin-top:1.4rem;font-size:.85rem}
+  .awards{margin-top:1.8rem;gap:.9rem}
+  .card{padding:1.2rem 1.05rem}
+  .card h4{font-size:1.3rem}
+  .site-card{padding:1.15rem 1.05rem}
+  .site-card h4{font-size:1.25rem}
+  .site-card p{font-size:.88rem}
+  .pledge{padding:.85rem .95rem;line-height:1.7;font-size:.92rem}
   .nav button{width:46px;height:46px}
   .spinbadge{width:76px}
   .hint{display:none}
@@ -211,6 +256,12 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--ink);
   .lb-frame img{max-height:58vh}
   .lb-tab{font-size:.95rem;padding:.45em 1em}
   .lb-close{width:44px;height:44px;top:2vh;right:4vw}
+  .sticker{height:72px}
+  .bubble{font-size:.95rem}
+  .finale .sticker{height:118px}
+  .meme-line{font-size:1.55rem}
+  .finale .meme-row{margin-top:1.6rem;gap:1rem}
+  .bgm-btn{font-size:1.05rem}
 }
 </style>
 </head>
@@ -227,19 +278,24 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--ink);
 <section class="slide cover active">
   <div class="wrap">
     <div class="cover-top rv">
-      <div class="kicker">SELF INTRODUCTION / 自我介绍</div>
+      <div class="kicker">CLASS COMMITTEE ELECTION / 班委竞选</div>
       <div class="badge-box">
         <svg class="spinbadge" viewBox="0 0 100 100">
           <defs><path id="cir" d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0"/></defs>
-          <text fill="#c9ff2e" font-size="11.5" letter-spacing="2"><textPath href="#cir">HELLO FRESHMAN · 你好大一 · 2026 ·</textPath></text>
+          <text fill="#c9ff2e" font-size="11.5" letter-spacing="2"><textPath href="#cir">VOTE FOR KEXIN · 请投胡可馨 · 2026 ·</textPath></text>
           <circle cx="50" cy="50" r="5" fill="#ff4fa3"/>
         </svg>
       </div>
     </div>
     <div class="rv"><span class="nametag">胡可馨 · HU KEXIN</span></div>
-    <h1 class="disp rv">大一<span class="dim">新生</span><br><span class="row2">请多<span class="acid">关照</span></span></h1>
+    <h1 class="disp rv">竞选<span class="dim">班委</span><br><span class="row2">请多<span class="acid">关照</span></span></h1>
     <div class="rv"><span class="tag">⚠ 本人不接受被定义</span></div>
     <p class="sub rv">拒绝标签 · 深度思考 · 无限可能</p>
+    <div class="meme-row rv">
+      <img class="sticker" src="https://t1.chatglm.cn/file/6acdf4178da660d6c64c12ed.jpg?expired_at=1792314771&sign=8f0f4d2f6bf64db90b1c5523d1c658db&ext=jpg" alt="正太扭腰">
+      <img class="sticker" src="https://t1.chatglm.cn/file/6acdf4168da660d6c64c12ea.jpg?expired_at=1792314771&sign=e61e339ea105985d45ddd7f61bfd7c78&ext=jpg" alt="严肃脸">
+      <span class="bubble">大家好我是正太奶龙</span>
+    </div>
   </div>
 </section>
 
@@ -279,39 +335,12 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--ink);
   </div>
 </section>
 
-<!-- 04 手作小程序 -->
+<!-- 04 班委经验 -->
 <section class="slide">
   <div class="wrap">
     <div class="chap rv">
       <div class="bignum">03</div>
-      <div class="kicker">CHAPTER 03 / 把想法做出来</div>
-    </div>
-    <h2 class="disp h2 rv">把想法<span class="acid">做出来</span></h2>
-    <p class="lead rv">平时喜欢捣鼓<em>有趣的小程序</em>，<br>让脑子里的点子，真正<em>跑起来</em>。</p>
-    <p class="body rv">下面两个都是我从零搭出来的小作品——心理学小站 &amp; 互动小游戏，欢迎点开玩一玩、提提意见 👇</p>
-    <div class="sites">
-      <a class="site-card rv" href="https://dai-mengji.github.io/psychology/" target="_blank" rel="noopener">
-        <div class="site-tag">SITE 01 / 心理学</div>
-        <h4>🧠 心理学小站</h4>
-        <p>把热爱的心理学，搭成了一个可以逛的小角落</p>
-        <span class="site-link">点我逛逛 →</span>
-      </a>
-      <a class="site-card rv" href="https://dai-mengji.github.io/game/" target="_blank" rel="noopener">
-        <div class="site-tag">SITE 02 / 小游戏</div>
-        <h4>🎮 互动小游戏</h4>
-        <p>亲手写的趣味小游戏，等你来挑战纪录</p>
-        <span class="site-link">点我开玩 →</span>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- 05 班委经验 -->
-<section class="slide">
-  <div class="wrap">
-    <div class="chap rv">
-      <div class="bignum">04</div>
-      <div class="kicker">CHAPTER 04 / 实战履历</div>
+      <div class="kicker">CHAPTER 03 / 实战履历</div>
     </div>
     <h2 class="disp h2 rv">班委经验<span class="acid">拉满</span></h2>
     <p class="body rv">从小学到现在，班委经历从未间断。除了团支书和体育委员，其他岗位基本都当过——大大小小的事都处理过。</p>
@@ -328,14 +357,15 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--ink);
   </div>
 </section>
 
-<!-- 06 勇于尝试 -->
+<!-- 05 勇于尝试 -->
 <section class="slide">
   <div class="wrap">
     <div class="chap rv">
-      <div class="bignum">05</div>
-      <div class="kicker">CHAPTER 05 / 敢试敢拼</div>
+      <div class="bignum">04</div>
+      <div class="kicker">CHAPTER 04 / 敢试敢拼</div>
     </div>
     <h2 class="disp h2 rv">勇于尝试，<span class="acid">坚持到底</span></h2>
+    <p class="body rv" style="margin-top:0">我不是什么学霸，只是不愿意轻易放弃——这些奖，就是「不放弃」换来的。</p>
     <div class="awards">
       <div class="card clickable rv" id="certCard">
         <div class="lv">NATIONAL 国家级</div>
@@ -349,45 +379,85 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--ink);
   </div>
 </section>
 
-<!-- 07 做朋友 -->
-<section class="slide">
-  <div class="wrap" style="text-align:center">
-    <div class="chap rv" style="justify-content:center">
-      <div class="bignum">06</div>
-      <div class="kicker">CHAPTER 06 / 社交信号</div>
-    </div>
-    <h2 class="disp h2-big rv">想和你们<br><span class="acid">成为朋友</span></h2>
-    <p class="lead rv" style="margin:0 auto">一起快乐度过<em>大学四年</em> ✦</p>
-    <div class="chips rv" style="justify-content:center">
-      <span class="chip hot">好友申请：已发送</span>
-      <span class="chip">探索未来 · 组队中</span>
-    </div>
-  </div>
-</section>
-
-<!-- 08 目标 -->
+<!-- 06 我能提供的价值 -->
 <section class="slide">
   <div class="wrap">
     <div class="chap rv">
-      <div class="bignum">07</div>
-      <div class="kicker">CHAPTER 07 / 四年之约</div>
+      <div class="bignum">05</div>
+      <div class="kicker">CHAPTER 05 / 我能提供的价值</div>
     </div>
-    <h2 class="disp h2 rv">我的大学目标</h2>
-    <h3 class="disp goal rv"><span class="flash">▸</span> 实现<span class="acid">经济自由</span></h3>
-    <p class="body rv">我相信人的性格和行为是流动的——我们可以塑造自己，也有机会活成自己想要的样子。</p>
+    <h2 class="disp h2 rv" style="margin-bottom:1rem">我能为班级<span class="acid">带来什么</span></h2>
+    <p class="lead rv" style="margin-bottom:1.6rem">打造咱们班的<em>专属数字名片</em>——<br>别人班发PPT，咱们发<em>网址</em>。</p>
+    <div class="awards rv" style="margin-top:0">
+      <div class="card"><div class="lv">VALUE 01 / 数字名片</div><h4>🪪 班级专属网页</h4><p>用纯代码给咱班建一个专属网页——大家的照片、班建活动、荣誉记录一站收录，点开就是酷炫的动态页面</p></div>
+      <div class="card"><div class="lv">VALUE 02 / 吸睛宣传</div><h4>🎨 动态PPT × 互动宣传</h4><p>带设计的动态PPT、互动小网站、互动小游戏……让班级宣传抓住所有人的眼球——抓眼球这件事，技术上不是问题</p></div>
+      <div class="card"><div class="lv">VALUE 03 / 文艺担当</div><h4>🎭 小品 · 剧情 · 舞蹈</h4><p>我可以表演一些抽象的或正经的小品、剧情、舞蹈，都可以现学现用——班级活动缺节目？我顶上</p></div>
+    </div>
+    <p class="plabel rv">🛠 平时喜欢把想法做成真东西 · 两个已上线的作品（点击可打开）👇</p>
+    <div class="sites rv">
+      <a class="site-card" href="https://dai-mengji.github.io/psychology/" target="_blank" rel="noopener">
+        <div class="site-tag">SITE 01 / 心理学</div>
+        <h4>🧠 心理学小站</h4>
+        <p>参考心理学文献与知识搭建，把热爱做成能逛的小角落</p>
+        <span class="site-link">点我逛逛 →</span>
+      </a>
+      <a class="site-card" href="https://dai-mengji.github.io/game/" target="_blank" rel="noopener">
+        <div class="site-tag">SITE 02 / 小游戏</div>
+        <h4>🎮 互动小游戏</h4>
+        <p>亲手写的趣味小游戏，从想法到上线全流程独立完成</p>
+        <span class="site-link">点我开玩 →</span>
+      </a>
+    </div>
+    <div class="chips rv">
+      <span class="chip hot">🎯 竞选意向：文艺 / 宣传委员</span>
+      <span class="chip hot">🧠 竞选意向：心理委员</span>
+    </div>
   </div>
 </section>
 
-<!-- 09 总结 -->
+<!-- 07 竞选宣言 -->
 <section class="slide">
   <div class="wrap">
-    <div class="kicker rv">ONE SENTENCE / 一句话总结</div>
-    <p class="sum rv" style="margin-top:2.5rem">
-      我是一个<span class="w">拒绝被定义</span>、<span class="w">相信无限可能</span>、<br>
-      喜欢深度思考、班委经验丰富、<br>
-      勇于尝试并<span class="w acid">坚持到底</span>的人。
-    </p>
-    <p class="body rv" style="font-size:1.3rem;margin-top:2.6rem">希望和大家做朋友，一起探索未来，朝经济自由努力 —— 谢谢！ 🚀</p>
+    <div class="chap rv">
+      <div class="bignum">06</div>
+      <div class="kicker">CHAPTER 06 / 竞选宣言</div>
+    </div>
+    <h2 class="disp h2 rv">请让我为班级<span class="acid">做点事</span></h2>
+    <p class="lead rv">竞选 <em>文艺 / 宣传委员</em> · <em>心理委员</em></p>
+    <div class="pledges rv">
+      <div class="pledge"><span class="ico">🛠</span><span><b>钻研力 MAX</b>为了做好这个网站，我连续研究了一个星期——一坐几个小时，不吃饭不睡觉也要把它搞定</span></div>
+      <div class="pledge"><span class="ico">🤝</span><span><b>负责到底</b>交给我的事情，我一定负责到底，绝不半途而废</span></div>
+      <div class="pledge"><span class="ico">🚀</span><span><b>持续进化</b>做出这个网站只是开始——我会一直学习更前沿的技术，更好地服务大家</span></div>
+      <div class="pledge"><span class="ico">🧠</span><span><b>心理底色</b>我热爱心理学，我的心理学网站就是参考专业文献搭建的——心理工作，我有热情更有基础</span></div>
+    </div>
+    <div class="chips rv">
+      <span class="chip hot">🗳 请把宝贵的一票，投给胡可馨</span>
+      <span class="chip">不管选没选上，班级的事我都在</span>
+    </div>
+  </div>
+</section>
+
+<!-- 08 投票彩蛋 -->
+<section class="slide finale">
+  <div class="wrap" style="text-align:center">
+    <span class="kicker rv">ENCORE / 最后的彩蛋</span>
+    <div class="meme-row rv">
+      <img class="sticker" src="https://t1.chatglm.cn/file/6acdf5738da660d6c64c1fc2.jpg?expired_at=1792314771&sign=822cc3864708975a1aa3585e40dd7669&ext=jpg" alt="大眼卖萌">
+      <p class="disp meme-line">投票了嘛？<span class="acid">谢谢！</span></p>
+    </div>
+    <div class="meme-row flip rv">
+      <img class="sticker" src="https://t1.chatglm.cn/file/6acdf4168da660d6c64c12ea.jpg?expired_at=1792314771&sign=e61e339ea105985d45ddd7f61bfd7c78&ext=jpg" alt="严肃脸">
+      <p class="disp meme-line">恭喜各位人生玩家，<span class="acid">入股不亏！</span></p>
+    </div>
+    <div class="bgm-zone rv">
+      <button class="bgm-btn" id="bgmBtn">
+        <span class="eq"><i></i><i></i><i></i><i></i></span>
+        <span id="bgmBtnText">🚀 启动 BGM</span>
+      </button>
+      <div class="bgm-box" id="bgmBox"></div>
+      <p class="bgm-note">BGM × 抽象收尾 · 效果翻倍</p>
+      <a class="bgm-fallback" href="https://y.music.163.com/m/song?id=333750" target="_blank" rel="noopener">播放器没反应？在网易云音乐打开 →</a>
+    </div>
   </div>
 </section>
 
@@ -404,7 +474,7 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--ink);
   </div>
 </div>
 
-<div class="pager"><b id="cur">01</b> / 09</div>
+<div class="pager"><b id="cur">01</b> / 08</div>
 <div class="nav">
   <button id="prev">←</button>
   <button id="next">→</button>
@@ -444,6 +514,26 @@ lb.addEventListener('click',e=>{if(e.target===lb)closeLB();});
 lb.addEventListener('touchstart',e=>e.stopPropagation());
 lb.addEventListener('touchend',e=>e.stopPropagation());
 
+/* ---------- BGM 启动按钮 ---------- */
+const bgmBtn=document.getElementById('bgmBtn');
+const bgmBtnText=document.getElementById('bgmBtnText');
+const bgmBox=document.getElementById('bgmBox');
+let bgmOn=false;
+bgmBtn.addEventListener('click',()=>{
+  bgmOn=!bgmOn;
+  if(bgmOn){
+    bgmBox.innerHTML='<iframe src="https://music.163.com/outchain/player?type=2&id=333750&auto=1&height=66" frameborder="no" border="0" marginwidth="0" marginheight="0" allow="autoplay; encrypted-media" loading="eager"></iframe>';
+    bgmBox.classList.add('show');
+    bgmBtn.classList.add('playing');
+    bgmBtnText.textContent='⏹ 关闭 BGM';
+  }else{
+    bgmBox.innerHTML='';
+    bgmBox.classList.remove('show');
+    bgmBtn.classList.remove('playing');
+    bgmBtnText.textContent='🚀 启动 BGM';
+  }
+});
+
 addEventListener('keydown',e=>{
   if(lb.classList.contains('open')){
     if(e.key==='Escape')closeLB();
@@ -459,7 +549,7 @@ let tx=0;
 addEventListener('touchstart',e=>tx=e.touches[0].clientX);
 addEventListener('touchend',e=>{const d=e.changedTouches[0].clientX-tx;if(d<-50)go(idx+1);if(d>50)go(idx-1)});
 
-const mqText='拒绝被定义 ✦ 无限可能 ✦ 深度思考 ✦ 持续升级 ✦ 勇于尝试 ✦ 坚持到底 ✦ 经济自由 ✦ 交个朋友 ✦ ';
+const mqText='拒绝被定义 ✦ 无限可能 ✦ 深度思考 ✦ 持续升级 ✦ 勇于尝试 ✦ 坚持到底 ✦ 现学现用 ✦ 入股不亏 ✦ ';
 document.getElementById('mq1').textContent=mqText.repeat(4);
 document.getElementById('mq2').textContent=mqText.repeat(4);
 go(0);
