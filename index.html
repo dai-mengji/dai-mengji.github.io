@@ -121,7 +121,7 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--ink);
 .bar .fill{height:100%;width:0;background:repeating-linear-gradient(45deg,var(--acid) 0 8px,#0b0b10 8px 16px)}
 .slide.active .bar .fill{transition:width 1.2s cubic-bezier(.2,.8,.2,1) .6s;width:var(--w)}
 
-/* 卡片（奖项/价值通用） */
+/* 卡片（价值页通用） */
 .awards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.2rem;margin-top:2.4rem}
 .card{border:2px solid var(--line);padding:1.6rem 1.4rem;background:rgba(244,242,236,.03);
   transition:border-color .35s;position:relative;overflow:hidden}
@@ -132,31 +132,6 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--ink);
 .card .lv{font-family:'Archivo Black',sans-serif;font-weight:400;font-size:.72rem;letter-spacing:.3em;color:var(--pink)}
 .card h4{font-family:'ZCOOL QingKe HuangYou','Microsoft YaHei',sans-serif;font-weight:700;font-size:1.5rem;margin:.6rem 0 .4rem}
 .card p{font-size:.95rem;color:rgba(244,242,236,.72);font-weight:400;line-height:1.7}
-
-/* 可点击的证书卡 */
-.clickable{cursor:pointer}
-.cert-hint{display:inline-flex;align-items:center;gap:.45em;margin-top:1rem;
-  font-weight:700;font-size:.88rem;color:var(--acid);letter-spacing:.12em;
-  animation:hintblink 2.2s ease-in-out infinite}
-@keyframes hintblink{50%{opacity:.5}}
-
-/* ---------- 证书灯箱 ---------- */
-.lightbox{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;
-  background:rgba(11,11,16,.95);opacity:0;visibility:hidden;transition:.3s;padding:4vh 4vw}
-.lightbox.open{opacity:1;visibility:visible}
-.lb-inner{display:flex;flex-direction:column;align-items:center;gap:1rem;max-width:94vw}
-.lb-tabs{display:flex;gap:.8rem}
-.lb-tab{border:2px solid var(--line);background:transparent;color:var(--ink);
-  padding:.5em 1.3em;font-family:'ZCOOL QingKe HuangYou','Microsoft YaHei',sans-serif;
-  font-weight:700;font-size:1.05rem;letter-spacing:.15em;cursor:pointer;transition:.25s}
-.lb-tab.active{background:var(--acid);color:#0b0b10;border-color:var(--acid)}
-.lb-frame{background:#fff;padding:10px;max-height:74vh;display:flex;align-items:center}
-.lb-frame img{display:block;max-height:70vh;max-width:min(560px,86vw);width:auto}
-.lb-cap{font-size:.85rem;letter-spacing:.2em;color:rgba(244,242,236,.65);text-align:center}
-.lb-close{position:fixed;top:3vh;right:4vw;width:52px;height:52px;
-  border:2px solid var(--line);background:rgba(11,11,16,.6);color:var(--ink);
-  font-size:1.3rem;cursor:pointer;transition:.3s;z-index:101}
-.lb-close:hover{background:var(--pink);border-color:var(--pink);color:#0b0b10}
 
 /* ---------- 作品站点卡 ---------- */
 .sites{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.2rem;margin-top:1rem;max-width:820px}
@@ -252,10 +227,6 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--ink);
   .spinbadge{width:76px}
   .hint{display:none}
   .mq-track{font-size:.75rem}
-  .lb-frame{max-height:62vh;padding:8px}
-  .lb-frame img{max-height:58vh}
-  .lb-tab{font-size:.95rem;padding:.45em 1em}
-  .lb-close{width:44px;height:44px;top:2vh;right:4vw}
   .sticker{height:72px}
   .bubble{font-size:.95rem}
   .finale .sticker{height:118px}
@@ -357,34 +328,12 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--ink);
   </div>
 </section>
 
-<!-- 05 勇于尝试 -->
+<!-- 05 我能提供的价值 -->
 <section class="slide">
   <div class="wrap">
     <div class="chap rv">
       <div class="bignum">04</div>
-      <div class="kicker">CHAPTER 04 / 敢试敢拼</div>
-    </div>
-    <h2 class="disp h2 rv">勇于尝试，<span class="acid">坚持到底</span></h2>
-    <p class="body rv" style="margin-top:0">我不是什么学霸，只是不愿意轻易放弃——这些奖，就是「不放弃」换来的。</p>
-    <div class="awards">
-      <div class="card clickable rv" id="certCard">
-        <div class="lv">NATIONAL 国家级</div>
-        <h4>英语奖项</h4>
-        <p>国家级奖项 · 初赛 + 复赛 双双拿下</p>
-        <span class="cert-hint">🔍 点击卡片，查看证书原件</span>
-      </div>
-      <div class="card rv"><div class="lv">PROVINCIAL 省级</div><h4>生物竞赛</h4><p>省级二等奖，理科细胞里也有热爱</p></div>
-      <div class="card rv"><div class="lv">CAMPUS 校内</div><h4>小荣誉 ×N</h4><p>认定的事，一般都会坚持到底 💪</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- 06 我能提供的价值 -->
-<section class="slide">
-  <div class="wrap">
-    <div class="chap rv">
-      <div class="bignum">05</div>
-      <div class="kicker">CHAPTER 05 / 我能提供的价值</div>
+      <div class="kicker">CHAPTER 04 / 我能提供的价值</div>
     </div>
     <h2 class="disp h2 rv" style="margin-bottom:1rem">我能为班级<span class="acid">带来什么</span></h2>
     <p class="lead rv" style="margin-bottom:1.6rem">打造咱们班的<em>专属数字名片</em>——<br>别人班发PPT，咱们发<em>网址</em>。</p>
@@ -415,12 +364,12 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--ink);
   </div>
 </section>
 
-<!-- 07 竞选宣言 -->
+<!-- 06 竞选宣言 -->
 <section class="slide">
   <div class="wrap">
     <div class="chap rv">
-      <div class="bignum">06</div>
-      <div class="kicker">CHAPTER 06 / 竞选宣言</div>
+      <div class="bignum">05</div>
+      <div class="kicker">CHAPTER 05 / 竞选宣言</div>
     </div>
     <h2 class="disp h2 rv">请让我为班级<span class="acid">做点事</span></h2>
     <p class="lead rv">竞选 <em>文艺 / 宣传委员</em> · <em>心理委员</em></p>
@@ -437,7 +386,7 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--ink);
   </div>
 </section>
 
-<!-- 08 投票彩蛋 -->
+<!-- 07 投票彩蛋 -->
 <section class="slide finale">
   <div class="wrap" style="text-align:center">
     <span class="kicker rv">ENCORE / 最后的彩蛋</span>
@@ -461,20 +410,7 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--ink);
   </div>
 </section>
 
-<!-- 证书灯箱 -->
-<div class="lightbox" id="lightbox">
-  <button class="lb-close" id="lbClose" title="关闭">✕</button>
-  <div class="lb-inner">
-    <div class="lb-tabs">
-      <button class="lb-tab active" data-img="https://t1.chatglm.cn/file/6ac75b8c5126fa4a7980ae55.jpg?expired_at=1791882024&sign=12cf15b40a00e76facb4b8746861ad09&ext=jpg" data-cap="第22届「外研社杯」全国中学生外语素养大赛 · 顺利通过初赛">初赛证书</button>
-      <button class="lb-tab" data-img="https://t1.chatglm.cn/file/6ac75b8c5126fa4a7980ae54.jpg?expired_at=1791882024&sign=35720b225ed1fa907f8ab81761b3c12e&ext=jpg" data-cap="第22届「外研社杯」全国中学生外语素养大赛 · 顺利通过复赛">复赛证书</button>
-    </div>
-    <div class="lb-frame"><img id="lbImg" src="https://t1.chatglm.cn/file/6ac75b8c5126fa4a7980ae55.jpg?expired_at=1791882024&sign=12cf15b40a00e76facb4b8746861ad09&ext=jpg" alt="外研社杯英语大赛证书"></div>
-    <p class="lb-cap" id="lbCap">第22届「外研社杯」全国中学生外语素养大赛 · 顺利通过初赛</p>
-  </div>
-</div>
-
-<div class="pager"><b id="cur">01</b> / 08</div>
+<div class="pager"><b id="cur">01</b> / 07</div>
 <div class="nav">
   <button id="prev">←</button>
   <button id="next">→</button>
@@ -492,27 +428,6 @@ function go(i){
 }
 document.getElementById('next').onclick=()=>go(idx+1);
 document.getElementById('prev').onclick=()=>go(idx-1);
-
-/* ---------- 证书灯箱逻辑 ---------- */
-const lb=document.getElementById('lightbox');
-const lbImg=document.getElementById('lbImg');
-const lbCap=document.getElementById('lbCap');
-const tabs=[...document.querySelectorAll('.lb-tab')];
-let tabIdx=0;
-function setTab(n){
-  tabIdx=n;
-  tabs.forEach((t,i)=>t.classList.toggle('active',i===n));
-  lbImg.src=tabs[n].dataset.img;
-  lbCap.textContent=tabs[n].dataset.cap;
-}
-function openLB(){setTab(0);lb.classList.add('open');}
-function closeLB(){lb.classList.remove('open');}
-tabs.forEach((t,i)=>t.addEventListener('click',e=>{e.stopPropagation();setTab(i);}));
-document.getElementById('certCard').addEventListener('click',openLB);
-document.getElementById('lbClose').addEventListener('click',closeLB);
-lb.addEventListener('click',e=>{if(e.target===lb)closeLB();});
-lb.addEventListener('touchstart',e=>e.stopPropagation());
-lb.addEventListener('touchend',e=>e.stopPropagation());
 
 /* ---------- BGM 启动按钮 ---------- */
 const bgmBtn=document.getElementById('bgmBtn');
@@ -535,12 +450,6 @@ bgmBtn.addEventListener('click',()=>{
 });
 
 addEventListener('keydown',e=>{
-  if(lb.classList.contains('open')){
-    if(e.key==='Escape')closeLB();
-    if(e.key==='ArrowRight')setTab((tabIdx+1)%tabs.length);
-    if(e.key==='ArrowLeft')setTab((tabIdx+tabs.length-1)%tabs.length);
-    return;
-  }
   if(['ArrowRight','ArrowDown',' ','PageDown'].includes(e.key))go(idx+1);
   if(['ArrowLeft','ArrowUp','PageUp'].includes(e.key))go(idx-1);
 });
@@ -549,7 +458,7 @@ let tx=0;
 addEventListener('touchstart',e=>tx=e.touches[0].clientX);
 addEventListener('touchend',e=>{const d=e.changedTouches[0].clientX-tx;if(d<-50)go(idx+1);if(d>50)go(idx-1)});
 
-const mqText='拒绝被定义 ✦ 无限可能 ✦ 深度思考 ✦ 持续升级 ✦ 勇于尝试 ✦ 坚持到底 ✦ 现学现用 ✦ 入股不亏 ✦ ';
+const mqText='拒绝被定义 ✦ 无限可能 ✦ 深度思考 ✦ 持续升级 ✦ 数字名片 ✦ 现学现用 ✦ 负责到底 ✦ 入股不亏 ✦ ';
 document.getElementById('mq1').textContent=mqText.repeat(4);
 document.getElementById('mq2').textContent=mqText.repeat(4);
 go(0);
